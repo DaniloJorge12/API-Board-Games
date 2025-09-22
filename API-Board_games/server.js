@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import gamesRoutes from "./src/routes/boardGamesRoutes.js"
+import Router from "./src/routes/boardGamesRoutes.js"
 import boardGames from "./src/models/dados.js";
 
 const app = express();
@@ -13,7 +13,7 @@ app.get("/", (req,res) => {
     res.send(boardGames)
 })
 
-app.use("/BoardGames", boardGames);
+app.use("/BoardGames", Router);
 
 app.listen(serverPort, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${serverPort} 🚀`);
