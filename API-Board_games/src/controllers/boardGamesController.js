@@ -61,7 +61,7 @@ const getGamesByld = (req, res) => {
 };
 
 const createGame = (req, res) => {
-    const { id, nome, categoria, minJogadores, maxJogadores, duracao, complexidade, editor, preco } = req.body || {};
+    const { nome, categoria, minJogadores, maxJogadores, duracao, complexidade, editor, preco } = req.body || {};
 
     if(!nome || !categoria || !complexidade || !editor ) {
         return res.status(400).json({
@@ -121,3 +121,27 @@ const deleteGame = (req, res) => {
         message: `O Board Game com o ${id} foi removido com sucesso`
     })
 };
+
+//Update
+const updateGame = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { nome, categoria, minJogadores, maxJogadores, duracao, complexidade, editor, preco } = req.query;
+
+    if(isNaN(id)){
+        return res.status(400).json({
+            success: false,
+            message: "O id deve ser um número válido!"
+        })
+    }
+
+    const gameExiste = boardGames.find(g => g.id === id);
+    if(!gameExiste){
+        return res.status(404).json({
+            success: false,
+            message: `O Board Game com o id ${id} é inexistente`
+        })
+    }
+
+    const gamesAtualizado = boardGames.map(g => 
+        g.id === id ? {
+            ...g,
