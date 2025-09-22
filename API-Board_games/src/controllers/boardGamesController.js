@@ -89,3 +89,35 @@ const createGame = (req, res) => {
         boardGames: novoGame
     });
 };
+
+//Delete
+const deleteGame = (req, res) => {
+    const id = parseInt(req.params.id);
+
+    if(isNaN(id)) {
+        return res.status(400).json({
+            success: false,
+            message: "O ID selecionado é invalido"
+        });
+    }
+
+    //Verificar se não tem outro Board Game com o ID
+    const gameParaRemover = boardGames.find(g => g.id === id);
+
+    if(!gameParaRemover) {
+        return res.status(404).json({
+            success: false,
+            message: `O Board Game com o ID ${id} não existe`
+        });
+    }
+
+    //Remover o Board Game com ID
+    const gamesFiltrados = boardGames.filter(g => g.id !== id);
+    boardGames.splice(0, boardGames.length, ...gamesFiltrados);
+
+
+    res.status(200).json({
+        success: true,
+        message: `O Board Game com o ${id} foi removido com sucesso`
+    })
+};
