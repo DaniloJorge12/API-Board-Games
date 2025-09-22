@@ -145,3 +145,25 @@ const updateGame = (req, res) => {
     const gamesAtualizado = boardGames.map(g => 
         g.id === id ? {
             ...g,
+            ...(nome && { nome }),
+            ...(categoria && { categoria }),
+            ...(minJogadores && { minJogadores }),
+            ...(maxJogadores && { maxJogadores }),
+            ...(duracao && { duracao }),
+            ...( complexidade &&  { complexidade }),
+            ...( editor &&  { editor }),
+            ...( preco &&  { preco })
+        } : g
+    );
+
+    boardGames.splice(0, boardGames.length, ...gamesAtualizado);
+    const gameEditado = boardGames.find(g => g.id === id);
+
+    res.status(200).json({
+        success: true,
+        message: "Dados do Board Game atualizado",
+        boardGames: gameEditado
+    })
+}
+
+export { getAllgames, getGamesByld, createGame, deleteGame, updateGame };
