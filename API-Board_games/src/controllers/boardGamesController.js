@@ -14,11 +14,11 @@ const getAllgames = (req, res) => {
     }    
 
     if(minJogadores) {
-        resultado = resultado.filter(g => g.minJogadores === minJogadores)
+        resultado = resultado.filter(g => g.minJogadores === parseInt(minJogadores))
     }
 
     if(maxJogadores) {
-        resultado = resultado.filter(g => g.maxJogadores === maxJogadores)
+        resultado = resultado.filter(g => g.maxJogadores === parseInt(maxJogadores))
     }
 
     if(categoria) {
@@ -71,7 +71,7 @@ const createGame = (req, res) => {
         });
     }
 
-    if(!minJogadores < maxJogadores) {
+    if(minJogadores >= maxJogadores) {
         return res.status(400).json({
             success: false,
             message: "O número mínimo de jogadores deve ser menor que o máximo."

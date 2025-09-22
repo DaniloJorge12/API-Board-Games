@@ -5,7 +5,7 @@ let boardGames = [
       categoria: "Estratégia",
       minJogadores: 3,
       maxJogadores: 4,
-      duracao: 60-120,
+      duracao: 90,
       complexidade: "Leve-Médio",
       editora: "Devir",
       preco: 250
@@ -16,7 +16,7 @@ let boardGames = [
       categoria: "Família",
       minJogadores: 2,
       maxJogadores: 5,
-      duracao: 30-60,
+      duracao: 45,
       complexidade: "Leve",
       editora: "Galápagos Jogos",
       preco: 300
@@ -49,7 +49,7 @@ let boardGames = [
       categoria: "Abstrato",
       minJogadores: 2,
       maxJogadores: 4,
-      duracao: 30-45,
+      duracao: 35,
       complexidade: "Leve-Médio",
       editora: "Galápagos Jogos",
       preco: 200
@@ -60,7 +60,7 @@ let boardGames = [
       categoria: "Cooperação/Sobrevivência",
       minJogadores: 3,
       maxJogadores: 12,
-      duracao: 20-30,
+      duracao: 25,
       complexidade: "Leve",
       editora: "Galápagos Jogos",
       preco: 100
