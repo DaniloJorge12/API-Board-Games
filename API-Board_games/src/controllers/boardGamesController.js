@@ -60,6 +60,7 @@ const getGamesByld = (req, res) => {
     res.status(200).json(game);    
 };
 
+//Create
 const createGame = (req, res) => {
     const { nome, categoria, minJogadores, maxJogadores, duracao, complexidade, editor, preco } = req.body || {};
 
@@ -68,6 +69,20 @@ const createGame = (req, res) => {
             success: false,
             message: "Nome, categoria, complexibilidade e editor são obrigatórios!"
         });
+    }
+
+    if(!minJogadores < maxJogadores) {
+        return res.status(400).json({
+            success: false,
+            message: "O número mínimo de jogadores deve ser menor que o máximo."
+        });
+    }
+
+    if(!duracao > 0) {
+        return res.status(400).json({
+            success: false,
+            message: "A duração deve ser maior que 0 minutos."
+        })
     }
 
     const novoGame = {
