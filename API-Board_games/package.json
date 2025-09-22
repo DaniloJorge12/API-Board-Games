@@ -1,0 +1,22 @@
+{
+  "name": "api-board_games",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "API",
+    "Board Games"
+  ],
+  "author": "Danilo J.",
+  "license": "MIT",
+  "description": "Atividade Avaliativa com o tema de Board Games",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
